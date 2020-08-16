@@ -1,0 +1,93 @@
+body {
+  background: linear-gradient(111deg, rgba(238,238,238,1) 0%, rgba(187,187,187,1) 100%);
+  background-attachment: fixed;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+@media only screen and (max-width: 900px) {
+  .file {
+    margin: 10px !important;
+    height: calc(20vw - 10px) !important;
+  }
+}
+@media only screen and (max-width: 720px) {
+  .file {
+    margin: 5px !important;
+    height: calc(30vw - 5px) !important;
+  }
+  .file h3 {
+    font-size: 1.2em !important;
+  }
+  .file p {
+    font-size: 1em !important;
+  }
+  .files {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .file {
+    margin: 5px !important;
+    height: calc(40vw - 5px) !important;
+  }
+  .file h3 {
+    font-size: 1.2em !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .file p {
+    font-size: 1em !important;
+  }
+  .files {
+    grid-template-columns: repeat(2, 1fr) !important;
+    padding: 5px !important;
+  }
+}
+
+.file {
+  border: solid 1px #ddd;
+  border-radius: 5px;
+  background: #eee;
+  margin: 10px;
+  height: 165px;
+  overflow: hidden;
+  cursor:  pointer;
+  transition: all .2s;
+  position: relative;
+}
+.file h3 {
+  padding: 10px;
+  background-color: #fff;
+  margin: 0px;
+  border-bottom: 1px solid #ddd;
+}
+.file p {
+  padding: 10px;
+  margin: 0px;
+}
+.file:hover {
+  border-color: #fff;
+}
+
+.file span {
+  position: absolute;
+  bottom: 0px;
+  background: #eee;
+  height: 40px;
+  width: 100%;
+  background: linear-gradient(0deg, rgba(238,238,238,1) 20%, rgba(238,238,238,0) 80%);
+}
+
+.files {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: rgba(255, 255, 255, .3);
+  padding: 20px;
+  border: solid 1px #fff;
+  border-radius: 5px;
+}
