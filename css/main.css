@@ -18,10 +18,14 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 20px 0px;
 }
 
 #nav hr {
   width: calc(50% - 180px);
+  margin: 0px;
+  opacity: .2;
 }
 
 .nav-item {
@@ -36,10 +40,11 @@ h1 {
 
 .nav-item:hover {
   background-color: #fff;
+  color: #333;
 }
 
 .logo {
-  width:100px;
+  width:75px;
 }
 
 #loginError p {
