@@ -24,7 +24,8 @@ class SessionAdapter {
   handleAuthEvent(json) {
     if (json.success) {
       document.querySelector('.user-form').remove()
-      // display folder view
+      folderAdapter.getFolders()
+        .then(Folder.showAllFolders)
     } else {
       document.querySelector('.user-form').classList.remove('hidden')
       if (json.error) {
