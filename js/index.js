@@ -16,7 +16,8 @@
 // //handle tabs
 //   show_doc when tab_clicked
 //   remove_tab when x_clicked
-
+let main = document.querySelector('#main')
+let folderAdapter = new FolderAdapter
 let session = new SessionAdapter
 
 session.checkSession()
