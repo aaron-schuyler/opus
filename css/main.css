@@ -13,6 +13,31 @@ h1 {
   display: none;
 }
 
+#nav {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-item {
+  margin: 20px;
+  padding: 10px;
+  color: #000;
+  background-color: #eee;
+  border: 1px solid #333;
+  border-radius: 5px;
+  transition: all .2s;
+}
+
+.nav-item:hover {
+  background-color: #fff;
+}
+
+.logo {
+  width:100px;
+}
+
 #loginError p {
   color: pink;
 }
@@ -44,6 +69,11 @@ h1 {
 .user-form input[type='submit'] {
   width: 30% !important;
   margin-bottom: 0px !important;
+  background-color: #eee;
+  transition: all .2s;
+}
+.user-form input[type='submit']:hover {
+  background-color: #fff;
 }
 
 @media only screen and (max-width: 900px) {

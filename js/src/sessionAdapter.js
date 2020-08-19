@@ -23,8 +23,8 @@ class SessionAdapter {
   }
   handleAuthEvent(json) {
     if (json.success) {
-      document.querySelector('.user-form').classList.add('hidden')
-
+      document.querySelector('.user-form').remove()
+      // display folder view
     } else {
       document.querySelector('.user-form').classList.remove('hidden')
       if (json.error) {
