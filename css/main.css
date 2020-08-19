@@ -20,6 +20,10 @@ h1 {
   align-items: center;
 }
 
+#nav hr {
+  width: calc(50% - 180px);
+}
+
 .nav-item {
   margin: 20px;
   padding: 10px;
