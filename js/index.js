@@ -16,3 +16,20 @@
 // //handle tabs
 //   show_doc when tab_clicked
 //   remove_tab when x_clicked
+
+let session = new SessionAdapter
+
+session.checkSession().then(console.log)
+
+const loginForm = document.querySelector('#loginForm')
+
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault()
+  e.stopPropagation()
+  const loginData = {
+    username: loginForm.username.value,
+    password: loginForm.password.value
+  }
+  session.login(loginData)
+    .then(console.log)
+})
