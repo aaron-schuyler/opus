@@ -19,7 +19,13 @@
 
 let session = new SessionAdapter
 
-session.checkSession().then(console.log)
+session.checkSession().then((loggedIn) => {
+  if (loggedIn) {
+
+  } else {
+    document.querySelector('.user-form').classList.remove('hidden')
+  }
+})
 
 const loginForm = document.querySelector('#loginForm')
 
