@@ -5,7 +5,7 @@ class SessionAdapter {
   checkSession() {
     return fetch(this.baseUrl + 'check_session', {credentials: 'include'})
       .then(res => res.json())
-      .then(handleAuthEvent)
+      .then(json => this.handleAuthEvent(json))
   }
   login(loginData) {
     const options = {
@@ -19,13 +19,14 @@ class SessionAdapter {
     }
     return fetch(this.baseUrl + 'login', options)
     .then(res => res.json())
-    .then(handleAuthEvent)
+    .then(this.handleAuthEvent)
   }
   handleAuthEvent(json) {
     if (json.success) {
-      document.querySelector('.user-form').classList.remove('hidden')
+      document.querySelector('.user-form').classList.add('hidden')
 
     } else {
+      document.querySelector('.user-form').classList.remove('hidden')
       if (json.error) {
         const error = document.createElement('p')
         error.innerText = json.error

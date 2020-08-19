@@ -19,13 +19,8 @@
 
 let session = new SessionAdapter
 
-session.checkSession().then((loggedIn) => {
-  if (loggedIn) {
+session.checkSession()
 
-  } else {
-    document.querySelector('.user-form').classList.remove('hidden')
-  }
-})
 
 const loginForm = document.querySelector('#loginForm')
 
@@ -37,5 +32,4 @@ loginForm.addEventListener('submit', (e) => {
     password: loginForm.password.value
   }
   session.login(loginData)
-    .then(console.log)
 })

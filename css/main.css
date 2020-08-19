@@ -13,6 +13,10 @@ h1 {
   display: none;
 }
 
+#loginError p {
+  color: pink;
+}
+
 .container {
   max-width: 900px;
   margin: auto;
