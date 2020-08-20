@@ -36,6 +36,16 @@ class Folder {
   }
 
   static showAllFolders() {
+    const newIcon = document.createElement('div')
+    newIcon.classList.add('folder-icon')
+    const icon = document.createElement('i')
+    icon.classList.add('fa', 'fa-plus')
+    const wrapper = document.createElement('div')
+    wrapper.append(icon, name)
+    newIcon.append(wrapper)
+    //handle new folder
+    // newIcon.addEventListener('click', )
+    Folder.folderNavigatorElement.prepend(newIcon)
     main.append(Folder.folderNavigatorElement)
   }
 
