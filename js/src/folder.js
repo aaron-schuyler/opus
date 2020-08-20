@@ -37,11 +37,24 @@ class Folder {
       })
   }
 
+  static controls(name) {
+    const foldersControls = document.createElement('div')
+    const title = document.createElement('h2')
+    title.innerText = name || 'Folders'
+    const search = document.createElement('input')
+    search.placeholder = 'Search Docs...'
+    foldersControls.append(title, search)
+    return foldersControls
+  }
+
+  get controls() {
+    const foldersControls = Folder.controls(this.name)
+    return foldersControls
+  }
+
   static showAllFolders() {
-    const h2 = document.createElement('h2')
-    h2.innerText = 'Folders'
     controls.innerHTML = ''
-    controls.append(h2)
+    controls.append(Folder.controls())
     main.replaceChild(Folder.folderNavigatorElement, main.firstChild)
   }
 
