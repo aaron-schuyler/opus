@@ -17,7 +17,9 @@ class Folder {
     const name = document.createElement('span')
     name.innerText = this.name
     name.classList.add('folder-name')
-    div.append(icon, name)
+    const wrapper = document.createElement('div')
+    wrapper.append(icon, name)
+    div.append(wrapper)
     div.addEventListener('click', this.goToFolder.bind(this))
     return div
   }

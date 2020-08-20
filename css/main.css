@@ -1,16 +1,18 @@
 @media only screen and (max-width: 900px) {
-  .folder-icon {
+  .folder-icon, .doc-icon {
     width: calc(33vw - 60px) !important;
+    height: calc(33vw - 60px) !important;
   }
 }
 @media only screen and (max-width: 450px) {
   .collection {
     grid-template-columns: repeat(2, auto) !important;
     grid-gap: 10px !important;
-    padding: 10px !important;
+    padding: 20px 10px !important;
   }
-  .folder-icon {
+  .folder-icon, .doc-icon {
     width: calc(50vw - 50px) !important;
+    height: calc(50vw - 50px) !important;
     overflow: hidden;
   }
   #nav hr {
@@ -119,11 +121,15 @@ h1 {
 
 .folder-icon {
   border: 1px solid #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 240px;
+  height: 240px;
   margin: auto;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.1);
-  padding: 50px 10px;
+  padding: 10px 10px;
   text-align:center;
   cursor: pointer;
 }
@@ -138,7 +144,6 @@ h1 {
   color:#eee;
   display: inline-block;
   width: 100%;
-  white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -148,4 +153,36 @@ h1 {
 }
 .folder-color-red i {
   color: #e33 !important;
+}
+
+.doc-icon {
+  border: 1px solid #eee;
+  width: 240px;
+  height: 240px;
+  overflow: hidden;
+  margin: auto;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.doc-icon-header {
+  border-bottom: 1px solid #eee;
+}
+
+.doc-icon h3 {
+  width: calc(100% - 20px);
+  margin: auto;
+  color: #eee;
+  padding: 10px 0px;
+}
+
+.doc-icon p {
+  color: #eee;
+  font-size: 16px;
+  width: calc(100% - 20px);
+  margin: auto;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 10px 0px;
 }
