@@ -211,3 +211,15 @@ h1 {
 .new-doc-icon:hover i {
   color: rgba(221, 153, 34, 1) !important;
 }
+
+.controls {
+  color: #eee;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

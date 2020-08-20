@@ -39,10 +39,20 @@ class Folder {
 
   static controls(name) {
     const foldersControls = document.createElement('div')
-    const title = document.createElement('h2')
-    title.innerText = name || 'Folders'
-    const search = document.createElement('input')
-    search.placeholder = 'Search Docs...'
+    foldersControls.classList.add('controls')
+    const h2 = document.createElement('h2')
+    h2.innerText = name || 'Folders'
+    const title = document.createElement('div')
+    title.classList.add('control')
+    title.append(h2)
+    const input = document.createElement('input')
+    input.placeholder = 'Search Docs...'
+    const search = document.createElement('div')
+    search.classList.add('control')
+    search.append(input)
+    const docControls = document.createElement('div')
+    docControls.classList.add('control')
+    docControls.id = 'docControls'
     foldersControls.append(title, search)
     return foldersControls
   }
