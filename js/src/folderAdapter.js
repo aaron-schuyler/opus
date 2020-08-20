@@ -12,4 +12,8 @@ class FolderAdapter {
         }
       })
   }
+  getFolderById(id) {
+    return fetch(this.baseUrl + id, {credentials: 'include'})
+      .then(res => res.json())
+  }
 }

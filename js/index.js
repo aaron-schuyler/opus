@@ -1,11 +1,3 @@
-// //on page load we should check the user's credentials
-//   if user_logged_in
-//     remove_login_form
-//     show_folders
-//
-// // handle login form
-//   SessionAdapter
-//
 // // handle logout
 //   SessionAdapter
 //
@@ -16,6 +8,7 @@
 // //handle tabs
 //   show_doc when tab_clicked
 //   remove_tab when x_clicked
+
 let main = document.querySelector('#main')
 let folderAdapter = new FolderAdapter
 let session = new SessionAdapter

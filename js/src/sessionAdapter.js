@@ -1,12 +1,14 @@
-class SessionAdapter {
+ class SessionAdapter {
   constructor() {
     this.baseUrl = 'http://localhost:3000/'
   }
+
   checkSession() {
     return fetch(this.baseUrl + 'check_session', {credentials: 'include'})
       .then(res => res.json())
       .then(json => this.handleAuthEvent(json))
   }
+
   login(loginData) {
     const options = {
       method: 'POST',
@@ -21,6 +23,7 @@ class SessionAdapter {
     .then(res => res.json())
     .then(this.handleAuthEvent)
   }
+
   handleAuthEvent(json) {
     if (json.success) {
       document.querySelector('.user-form').remove()
