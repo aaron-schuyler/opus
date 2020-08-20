@@ -2,12 +2,8 @@ class Folder {
   static folderNavigatorElement = Folder.generateCollectionView('allFolders')
 
   constructor(folder) {
+    Object.assign(this, folder)
     this.docNavigatorElement = Folder.generateCollectionView('folder-' + folder.id + '-docs')
-    this.id = folder.id
-    this.name = folder.name
-    this.color = folder.color
-    this.docCount = folder.docs
-
     Folder.folderNavigatorElement.append(this.folderIcon)
   }
 
@@ -30,7 +26,7 @@ class Folder {
     folderAdapter.getFolderById(this.id)
       .then((json) => {
         for (const doc of json.docs) {
-          newDoc = new Doc(doc)
+          const newDoc = new Doc(doc)
           this.docNavigatorElement.append(newDoc.docIcon)
         }
         main.replaceChild(this.docNavigatorElement, Folder.folderNavigatorElement)
