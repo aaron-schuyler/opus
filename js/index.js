@@ -16,6 +16,10 @@ let session = new SessionAdapter
 
 session.checkSession()
 
+const docView = document.querySelector('#docView')
+docView.addEventListener('click', Doc.shoDocView)
+const folderView = document.querySelector('#folderView')
+folderView.addEventListener('click', Folder.showAllFolders)
 
 const loginForm = document.querySelector('#loginForm')
 

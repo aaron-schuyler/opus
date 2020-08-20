@@ -3,7 +3,6 @@ class Folder {
 
   constructor(folder) {
     Object.assign(this, folder)
-    this.docNavigatorElement = Folder.generateCollectionView('folder-' + folder.id + '-docs', this.id)
     Folder.folderNavigatorElement.append(this.folderIcon)
   }
 
@@ -25,15 +24,16 @@ class Folder {
   }
 
   goToFolder() {
+    const docNavigatorElement = Folder.generateCollectionView('folder-' + this.id + '-docs', this.id)
     folderAdapter.getFolderById(this.id)
       .then((json) => {
         for (const doc of json.docs) {
           const newDoc = new Doc(doc)
-          this.docNavigatorElement.append(newDoc.docIcon)
+          docNavigatorElement.append(newDoc.docIcon)
         }
         controls.innerHTML = ''
         controls.append(this.controls)
-        main.replaceChild(this.docNavigatorElement, Folder.folderNavigatorElement)
+        main.replaceChild(docNavigatorElement, Folder.folderNavigatorElement)
       })
   }
 
@@ -49,7 +49,6 @@ class Folder {
     const div = document.createElement('div')
     div.classList.add('collection')
     div.id = id
-
     const newIcon = document.createElement('div')
     const icon = document.createElement('i')
     icon.classList.add('fa', 'fa-plus')
