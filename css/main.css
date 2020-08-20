@@ -1,3 +1,23 @@
+@media only screen and (max-width: 900px) {
+  .folder-icon {
+    width: calc(33vw - 60px) !important;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .collection {
+    grid-template-columns: repeat(2, auto) !important;
+    grid-gap: 10px !important;
+    padding: 10px !important;
+  }
+  .folder-icon {
+    width: calc(50vw - 50px) !important;
+    overflow: hidden;
+  }
+  #nav hr {
+    display: none;
+  }
+}
+
 body {
   background: linear-gradient(111deg, rgba(60,60,60,1) 0%, rgba(10,10,10,1) 100%);
   background-attachment: fixed;
@@ -85,9 +105,47 @@ h1 {
   background-color: #fff;
 }
 
-@media only screen and (max-width: 900px) {
-
+.collection {
+  padding:20px;
+  margin-top:20px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-auto-rows: auto;
+  grid-gap: 20px;
 }
-@media only screen and (max-width: 450px) {
 
+.folder-icon {
+  border: 1px solid #eee;
+  width: 240px;
+  margin: auto;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 50px 10px;
+  text-align:center;
+  cursor: pointer;
+}
+
+.folder-icon i {
+  display:block;
+  font-size: 50px;
+  color: #eee;
+}
+
+.folder-name {
+  color:#eee;
+  display: inline-block;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.folder-color-red {
+  border-color: #e33 !important;
+}
+.folder-color-red i {
+  color: #e33 !important;
 }
