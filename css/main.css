@@ -134,7 +134,7 @@ h1 {
   cursor: pointer;
 }
 
-.folder-icon i {
+.folder-icon i{
   display:block;
   font-size: 50px;
   color: #eee;
@@ -185,4 +185,8 @@ h1 {
   text-overflow: ellipsis;
   overflow: hidden;
   padding: 10px 0px;
+}
+
+.new-doc-icon {
+  padding: 0px !important;
 }

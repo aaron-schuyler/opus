@@ -3,7 +3,7 @@ class Folder {
 
   constructor(folder) {
     Object.assign(this, folder)
-    this.docNavigatorElement = Folder.generateCollectionView('folder-' + folder.id + '-docs')
+    this.docNavigatorElement = Folder.generateCollectionView('folder-' + folder.id + '-docs', this.id)
     Folder.folderNavigatorElement.append(this.folderIcon)
   }
 
@@ -31,28 +31,42 @@ class Folder {
           const newDoc = new Doc(doc)
           this.docNavigatorElement.append(newDoc.docIcon)
         }
+        controls.innerHTML = ''
+        controls.append(this.controls)
         main.replaceChild(this.docNavigatorElement, Folder.folderNavigatorElement)
       })
   }
 
   static showAllFolders() {
+    const h2 = document.createElement('h2')
+    h2.innerText = 'Folders'
+    controls.innerHTML = ''
+    controls.append(h2)
+    main.replaceChild(Folder.folderNavigatorElement, main.firstChild)
+  }
+
+  static generateCollectionView(id, folderId) {
+    const div = document.createElement('div')
+    div.classList.add('collection')
+    div.id = id
+
     const newIcon = document.createElement('div')
-    newIcon.classList.add('folder-icon')
     const icon = document.createElement('i')
     icon.classList.add('fa', 'fa-plus')
     const wrapper = document.createElement('div')
     wrapper.append(icon, name)
     newIcon.append(wrapper)
-    //handle new folder
-    // newIcon.addEventListener('click', )
-    Folder.folderNavigatorElement.prepend(newIcon)
-    main.append(Folder.folderNavigatorElement)
-  }
+    if (folderId) {
+      newIcon.classList.add('folder-icon', 'new-doc-icon')
+      //handle new doc
+      // newIcon.addEventListener('click', )
+    } else {
+      newIcon.classList.add('folder-icon')
+      //handle new folder
+      // newIcon.addEventListener('click', )
+    }
+    div.prepend(newIcon)
 
-  static generateCollectionView(id) {
-    const div = document.createElement('div')
-    div.classList.add('collection')
-    div.id = id
     return div
   }
 }

@@ -10,6 +10,7 @@
 //   remove_tab when x_clicked
 
 let main = document.querySelector('#main')
+let controls = document.querySelector('#viewControls')
 let folderAdapter = new FolderAdapter
 let session = new SessionAdapter
 
