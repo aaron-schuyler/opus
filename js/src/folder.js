@@ -73,7 +73,7 @@ class Folder {
       //handle new doc
       // newIcon.addEventListener('click', )
     } else {
-      newIcon.classList.add('folder-icon')
+      newIcon.classList.add('folder-icon', 'new-doc-icon')
       //handle new folder
       // newIcon.addEventListener('click', )
     }

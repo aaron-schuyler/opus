@@ -204,3 +204,10 @@ h1 {
   outline: none;
   border-color: rgba(221, 153, 34, 1);
 }
+
+.new-doc-icon:hover {
+  border-color: rgba(221, 153, 34, 1);
+}
+.new-doc-icon:hover i {
+  color: rgba(221, 153, 34, 1) !important;
+}
