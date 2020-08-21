@@ -31,6 +31,7 @@ class Doc {
         let query = e.target.value
         docAdapter.search(query).then((json) => {
           const docNavigatorElement = Folder.generateCollectionView('searchResults')
+          docNavigatorElement.firstChild.remove()
           if (json.docs.length > 0){
             for (const doc of json.docs) {
               const newDoc = new Doc(doc)

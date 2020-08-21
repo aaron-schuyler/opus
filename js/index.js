@@ -23,6 +23,18 @@ let beforeSearch = {}
 let backFunction = false
 let controlHeading
 
+let popup
+
+function closePopup(e) {
+  let newButton = document.querySelector('.new-doc-icon')
+    if (popup && !popup.contains(e.target) && !newButton.contains(e.target)) {
+      popup.remove()
+      popup = undefined
+    }
+}
+
+document.addEventListener('click', closePopup)
+
 session.checkSession()
 
 const docView = document.querySelector('#docView')

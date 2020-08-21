@@ -139,5 +139,26 @@ const Templates = {
         }
       ]
     }
+  },
+  newFolderPopup: function() {
+    return {
+      tag: 'div',
+      classes: ['popup'],
+      id: 'newFolderPopup',
+      children: [
+        {
+          tag: 'input',
+          properties: {
+            type: 'text',
+            placeholder: 'New Folder',
+            name: 'name'
+          }
+        },
+        {
+          tag: 'button',
+          content: 'Create New Folder'
+        }
+      ]
+    }
   }
 }
