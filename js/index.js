@@ -14,6 +14,9 @@ let controls = document.querySelector('#viewControls')
 let folderAdapter = new FolderAdapter
 let session = new SessionAdapter
 
+let saveTimer
+let searchTimer
+
 session.checkSession()
 
 const docView = document.querySelector('#docView')

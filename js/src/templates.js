@@ -108,7 +108,7 @@ const Templates = {
         },
         {
           tag: 'div',
-          classes: ['control'],
+          classes: ['control', 'search'],
           children: [
             {
               tag: 'input',

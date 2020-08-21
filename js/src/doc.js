@@ -22,4 +22,10 @@ class Doc {
   deSelectDoc(e) {
     this.icon.classList.toggle('border-color-gold')
   }
+  static search(e) {
+    clearTimeout(searchTimer)
+    searchTimer = setTimeout(() => {
+      console.log('searching')
+    }, 500)
+  }
 }

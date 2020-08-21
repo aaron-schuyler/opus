@@ -29,7 +29,10 @@ class Folder {
 
   static controls(name = 'Folders', backDisabled = true) {
     const controls = new Dominator(Templates.navigatorControls({name: name, backDisabled: backDisabled}))
-    return controls.domElement
+    const foldersControls = controls.domElement
+    const search = foldersControls.querySelector('.search input')
+    search.addEventListener('keyup', Doc.search)
+    return foldersControls
   }
 
   get controls() {
