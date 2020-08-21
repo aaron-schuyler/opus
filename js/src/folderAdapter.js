@@ -16,4 +16,25 @@ class FolderAdapter {
     return fetch(this.baseUrl + id, {credentials: 'include'})
       .then(res => res.json())
   }
+  createFolder(e) {
+    const name = popup.querySelector('input[name="name"]').value
+    fetch(this.baseUrl, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accepts': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name
+      })
+    })
+    .then(res => res.json())
+    .then((json) => {
+      if (json.success){
+        new Folder(json.folder)
+        popup.remove()
+      }
+    })
+  }
 }

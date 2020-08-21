@@ -50,12 +50,13 @@ class Folder {
 
   static newFolder() {
     const newFolderPopup = new Dominator(Templates.newFolderPopup())
-    if (popup) {
+    if (document.querySelector('#newFolderPopup')) {
       document.body.replaceChild(popup, popup)
     } else {
       popup = newFolderPopup.domElement
       document.body.insertBefore(popup, main)
     }
+    popup.querySelector('button').addEventListener('click', folderAdapter.createFolder.bind(folderAdapter))
   }
 
   static goBack() {
