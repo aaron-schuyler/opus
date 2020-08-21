@@ -49,6 +49,29 @@ const Templates = {
       ]
     }
   },
+  collection: function() {
+    return {
+      tag: 'div',
+      classes: ['collection'],
+      children: [
+        {
+          tag: 'div',
+          classes: ['folder-icon', 'new-doc-icon'],
+          children: [
+            {
+              tag: 'div',
+              children: [
+                {
+                  tag: 'i',
+                  classes: ['fa', 'fa-plus']
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
   navigatorControls: function(obj) {
     return {
       tag: 'div',

@@ -44,26 +44,14 @@ class Folder {
   }
 
   static generateCollectionView(id, folderId) {
-    const div = document.createElement('div')
-    div.classList.add('collection')
-    div.id = id
-    const newIcon = document.createElement('div')
-    const icon = document.createElement('i')
-    icon.classList.add('fa', 'fa-plus')
-    const wrapper = document.createElement('div')
-    wrapper.append(icon, name)
-    newIcon.append(wrapper)
+    const collection = new Dominator(Templates.collection())
     if (folderId) {
-      newIcon.classList.add('folder-icon', 'new-doc-icon')
       //handle new doc
       // newIcon.addEventListener('click', )
     } else {
-      newIcon.classList.add('folder-icon', 'new-doc-icon')
       //handle new folder
       // newIcon.addEventListener('click', )
     }
-    div.prepend(newIcon)
-
-    return div
+    return collection.domElement
   }
 }
