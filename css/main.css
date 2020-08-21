@@ -185,6 +185,24 @@ h1 {
 .folder-color-red i {
   color: #e33 !important;
 }
+.folder-color-blue {
+  border-color: #33e !important;
+}
+.folder-color-blue i {
+  color: #33e !important;
+}
+.folder-color-green {
+  border-color: #3e3 !important;
+}
+.folder-color-green i {
+  color: #3e3 !important;
+}
+.folder-color-pink {
+  border-color: #e3e !important;
+}
+.folder-color-pink i {
+  color: #e3e !important;
+}
 
 .doc-icon {
   border: 1px solid #eee;
@@ -345,6 +363,19 @@ h1 {
 }
 
 .popup button:hover {
+  background-color: rgba(221, 153, 34, 1);
+  cursor:pointer;
+}
+
+.doc-control {
+  padding: 10px;
+  margin-left: 5px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background-color: #eee;
+}
+
+.doc-control:hover {
   background-color: rgba(221, 153, 34, 1);
   cursor:pointer;
 }

@@ -17,9 +17,16 @@ class Doc {
   }
   selectDoc(e) {
     Doc.selectedDoc = this
+    const dominator = new Dominator(Templates.docControls(this.id))
+    const newDocControls = dominator.domElement
+
+    const docControls = document.querySelector("#docControls")
+    docControls.innerHTML = ''
+    docControls.append(newDocControls)
     this.icon.classList.toggle('border-color-gold')
   }
   deSelectDoc(e) {
+    docControls.innerHTML = ''
     this.icon.classList.toggle('border-color-gold')
   }
   static search(e) {

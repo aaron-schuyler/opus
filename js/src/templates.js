@@ -201,5 +201,56 @@ const Templates = {
         }
       ]
     }
+  },
+  docControls: function(id) {
+    return {
+      tag: 'div',
+      children: [
+        {
+          tag: 'button',
+          classes: ['doc-control'],
+          id: 'editDoc',
+          children: [
+            {
+              tag: 'i',
+              classes: ['fa', 'fa-pen']
+            }
+          ]
+        },
+        {
+          tag: 'button',
+          classes: ['doc-control'],
+          id: 'editDoc',
+          children: [
+            {
+              tag: 'i',
+              classes: ['fa', 'fa-trash']
+            }
+          ]
+        },
+        {
+          tag: 'button',
+          classes: ['doc-control'],
+          id: 'editDoc',
+          children: [
+            {
+              tag: 'i',
+              classes: ['fa', 'fa-share']
+            }
+          ]
+        },
+        {
+          tag: 'button',
+          classes: ['doc-control'],
+          id: 'editDoc',
+          children: [
+            {
+              tag: 'i',
+              classes: ['fa', 'fa-folder']
+            }
+          ]
+        }
+      ]
+    }
   }
 }

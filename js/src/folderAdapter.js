@@ -18,6 +18,7 @@ class FolderAdapter {
   }
   createFolder(e) {
     const name = popup.querySelector('input[name="name"]').value
+    const color = popup.querySelector('select[name="color"]').value
     fetch(this.baseUrl, {
       method: 'POST',
       credentials: 'include',
@@ -26,7 +27,8 @@ class FolderAdapter {
         'Accepts': 'application/json'
       },
       body: JSON.stringify({
-        name: name
+        name: name,
+        color: color
       })
     })
     .then(res => res.json())
