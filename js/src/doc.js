@@ -24,6 +24,7 @@ class Doc {
   }
   static search(e) {
     const previous = main.firstChild
+    controlHeading.innerText = 'Search'
     clearTimeout(searchTimer)
     if (e.target.value !== '') {
       searchTimer = setTimeout(() => {
@@ -52,7 +53,9 @@ class Doc {
   static showEmptySearch(e) {
     if (e.target.value === ''){
       if (main.firstChild.id !== 'searchResults') {
-      beforeSearch = main.firstChild
+      beforeSearch.domElement = main.firstChild
+      beforeSearch.controlHeading = controlHeading.innerText
+      controlHeading.innerText = 'Search'
       }
       const empty = new Dominator(Templates.empty('Search for Something.'))
       const message = empty.domElement

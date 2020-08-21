@@ -18,7 +18,7 @@ let session = new SessionAdapter
 let saveTimer
 let searchTimer
 
-let beforeSearch
+let beforeSearch = {}
 
 let backFunction = false
 let controlHeading

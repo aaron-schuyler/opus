@@ -278,3 +278,13 @@ h1 {
 .disabled {
   opacity: .2;
 }
+
+.empty-collection {
+  padding:20px;
+  margin-top:20px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #eee;
+  text-align: center;
+}

@@ -48,11 +48,16 @@ class Folder {
     document.querySelector('.back i').classList.add('disabled')
   }
 
+  static newFolder() {
+
+
+  }
+
   static goBack() {
     if (backFunction) {
-      console.log('back')
       if (main.firstChild.id === 'searchResults'){
-        main.replaceChild(beforeSearch, main.firstChild)
+        main.replaceChild(beforeSearch.domElement, main.firstChild)
+        controlHeading.innerText = beforeSearch.controlHeading
       } else {
         backFunction()
       }
@@ -63,13 +68,15 @@ class Folder {
 
   static generateCollectionView(id, folderId) {
     const collection = new Dominator(Templates.collection(id))
+    const domElement = collection.domElement
+    const newIcon = domElement.querySelector('.new-doc-icon')
     if (folderId) {
       //handle new doc
-      // newIcon.addEventListener('click', )
+      //newIcon.addEventListener('click', )
     } else {
       //handle new folder
-      // newIcon.addEventListener('click', )
+      newIcon.addEventListener('click', Folder.newFolder)
     }
-    return collection.domElement
+    return domElement
   }
 }
