@@ -49,10 +49,11 @@ const Templates = {
       ]
     }
   },
-  collection: function() {
+  collection: function(id) {
     return {
       tag: 'div',
       classes: ['collection'],
+      id: id,
       children: [
         {
           tag: 'div',
@@ -122,6 +123,19 @@ const Templates = {
           tag: 'div',
           classes: ['control'],
           id: 'docControls'
+        }
+      ]
+    }
+  },
+  empty: function(message = '') {
+    return {
+      tag: 'div',
+      id: 'searchResults',
+      classes: ['empty-collection'],
+      children: [
+        {
+          tag: 'p',
+          content: message
         }
       ]
     }

@@ -11,11 +11,17 @@
 
 let main = document.querySelector('#main')
 let controls = document.querySelector('#viewControls')
+let docAdapter = new DocAdapter
 let folderAdapter = new FolderAdapter
 let session = new SessionAdapter
 
 let saveTimer
 let searchTimer
+
+let beforeSearch
+
+let backFunction = false
+let controlHeading
 
 session.checkSession()
 
