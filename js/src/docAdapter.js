@@ -8,4 +8,12 @@ class DocAdapter {
     })
     .then(res => res.json())
   }
+  delete(id) {
+    return fetch(this.baseUrl + id, {
+      method: 'DELETE',
+      credentials: 'include'
+    })
+    .then(res => res.json())
+  }
+
 }

@@ -220,7 +220,7 @@ const Templates = {
         {
           tag: 'button',
           classes: ['doc-control'],
-          id: 'editDoc',
+          id: 'deleteDoc',
           children: [
             {
               tag: 'i',
@@ -231,7 +231,7 @@ const Templates = {
         {
           tag: 'button',
           classes: ['doc-control'],
-          id: 'editDoc',
+          id: 'shareDoc',
           children: [
             {
               tag: 'i',
@@ -242,7 +242,7 @@ const Templates = {
         {
           tag: 'button',
           classes: ['doc-control'],
-          id: 'editDoc',
+          id: 'moveDoc',
           children: [
             {
               tag: 'i',

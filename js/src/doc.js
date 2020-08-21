@@ -15,18 +15,37 @@ class Doc {
   openDoc() {
     console.log('opening ' + this.name)
   }
+  deleteDoc() {
+    docAdapter.delete(this.id)
+    .then((json) => {
+      if (json.success) {
+        this.icon.remove()
+      }
+    })
+  }
+  shareDoc() {
+
+  }
+  moveDoc() {
+
+  }
   selectDoc(e) {
     Doc.selectedDoc = this
     const dominator = new Dominator(Templates.docControls(this.id))
     const newDocControls = dominator.domElement
-
+    newDocControls.querySelector('#editDoc').addEventListener('click', this.openDoc.bind(this))
+    newDocControls.querySelector('#deleteDoc').addEventListener('click', this.deleteDoc.bind(this))
+    newDocControls.querySelector('#shareDoc').addEventListener('click', this.shareDoc.bind(this))
+    newDocControls.querySelector('#moveDoc').addEventListener('click', this.moveDoc.bind(this))
     const docControls = document.querySelector("#docControls")
     docControls.innerHTML = ''
     docControls.append(newDocControls)
     this.icon.classList.toggle('border-color-gold')
   }
   deSelectDoc(e) {
-    docControls.innerHTML = ''
+    setTimeout(() => {
+      docControls.innerHTML = ''
+    }, 2000)
     this.icon.classList.toggle('border-color-gold')
   }
   static search(e) {

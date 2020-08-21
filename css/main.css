@@ -25,6 +25,9 @@
   #nav hr {
     display: none;
   }
+  #docControls {
+    grid-column-start: 3;
+  }
   .controls {
     grid-template-columns: auto repeat(2, 1fr) !important;
   }
@@ -373,6 +376,7 @@ h1 {
   border-radius: 5px;
   border: 1px solid #333;
   background-color: #eee;
+  outline: none;
 }
 
 .doc-control:hover {
