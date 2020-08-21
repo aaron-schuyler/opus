@@ -82,6 +82,25 @@ const Templates = {
           classes: ['control'],
           children: [
             {
+              tag: 'a',
+              classes: ['back'],
+              properties: {
+                href: '#'
+              },
+              children: [
+                {
+                  tag: 'i',
+                  classes: ['fa', 'fa-caret-square-left', obj.backDisabled ? 'disabled': 'fa']
+                }
+              ]
+            }
+          ]
+        },
+        {
+          tag: 'div',
+          classes: ['control'],
+          children: [
+            {
               tag: 'h2',
               content: obj.name
             }

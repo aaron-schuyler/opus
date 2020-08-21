@@ -25,6 +25,9 @@
   #nav hr {
     display: none;
   }
+  .controls {
+    grid-template-columns: auto repeat(2, 1fr) !important;
+  }
 }
 
 body {
@@ -236,11 +239,42 @@ h1 {
 .controls {
   color: #eee;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: auto repeat(3, 1fr);
+  text-align: left;
 }
 
 .control {
   display: flex;
-  justify-content: center;
+  padding: 10px;
   align-items: center;
+}
+
+.control input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+  outline: none;
+  background-color: rgba(225, 225, 225, .1);
+  border: 1px solid #eee;
+  transition: all .2s;
+}
+
+.control input:active, .control input:hover, .control input:focus {
+  background-color: rgba(225, 225, 225, .8);
+}
+
+.back i {
+  font-size: 35px;
+  color: #eee;
+  padding: 0px !important;
+  transition: all .2s;
+}
+
+.back i:not(.disabled):hover {
+  color: rgba(221, 153, 34, 1);
+}
+
+.disabled {
+  opacity: .2;
 }

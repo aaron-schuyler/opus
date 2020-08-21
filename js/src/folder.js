@@ -27,13 +27,14 @@ class Folder {
       })
   }
 
-  static controls(name = 'Folders') {
-    const controls = new Dominator(Templates.navigatorControls({name: name}))
+  static controls(name = 'Folders', backDisabled = true) {
+    const controls = new Dominator(Templates.navigatorControls({name: name, backDisabled: backDisabled}))
     return controls.domElement
   }
 
   get controls() {
-    const foldersControls = Folder.controls(this.name)
+    const foldersControls = Folder.controls(this.name, false)
+    foldersControls.querySelector('.back').addEventListener('click', Folder.showAllFolders)
     return foldersControls
   }
 
