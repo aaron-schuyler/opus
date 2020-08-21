@@ -7,18 +7,8 @@ class Folder {
   }
 
   get folderIcon() {
-    const div = document.createElement('div')
-    div.id = 'folder-' + this.id
-    div.classList.add('folder-icon', 'folder-color-' + this.color)
-    div.title = this.name
-    const icon = document.createElement('i')
-    icon.classList.add('fa', 'fa-folder')
-    const name = document.createElement('span')
-    name.innerText = this.name
-    name.classList.add('folder-name')
-    const wrapper = document.createElement('div')
-    wrapper.append(icon, name)
-    div.append(wrapper)
+    const icon = new Dominator(Templates.folderIcon(this))
+    const div = icon.domElement
     div.addEventListener('click', this.goToFolder.bind(this))
     return div
   }
@@ -37,24 +27,9 @@ class Folder {
       })
   }
 
-  static controls(name) {
-    const foldersControls = document.createElement('div')
-    foldersControls.classList.add('controls')
-    const h2 = document.createElement('h2')
-    h2.innerText = name || 'Folders'
-    const title = document.createElement('div')
-    title.classList.add('control')
-    title.append(h2)
-    const input = document.createElement('input')
-    input.placeholder = 'Search Docs...'
-    const search = document.createElement('div')
-    search.classList.add('control')
-    search.append(input)
-    const docControls = document.createElement('div')
-    docControls.classList.add('control')
-    docControls.id = 'docControls'
-    foldersControls.append(title, search)
-    return foldersControls
+  static controls(name = 'Folders') {
+    const controls = new Dominator(Templates.navigatorControls({name: name}))
+    return controls.domElement
   }
 
   get controls() {

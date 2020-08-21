@@ -4,7 +4,7 @@ class Dominator {
     let childObjects = []
     if (object.children){
       for (const child of object.children) {
-        let childObject = new Dominatrix(child)
+        let childObject = new Dominator(child)
         childObjects.push(childObject)
       }
     }
@@ -14,6 +14,9 @@ class Dominator {
     const domElement = document.createElement(this.tag)
     if (this.id) domElement.id = this.id
     if (this.content) domElement.innerText = this.content
+    if (this.properties) for (const prop in this.properties) {
+      domElement[prop] = this.properties[prop]
+    }
     if (this.classes) for (const cssClass of this.classes) {
       domElement.classList.add(cssClass)
     }
