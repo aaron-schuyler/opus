@@ -290,7 +290,6 @@ h1 {
 }
 
 .popup {
-  width: 350px;
   margin:auto;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.1);
@@ -298,17 +297,42 @@ h1 {
   border: 1px solid #eee;
   text-align: center;
 }
-
-.popup input {
-  padding: 10px;
+.popup select {
   border-radius: 5px 0px 0px 5px;
+  padding: 10px;
+  height: 40px;
   border: 1px solid #333;
   border-right: none;
+  border-left: none;
   box-sizing: border-box;
   outline: none;
 }
+
+.red {
+  color: #e33;
+}
+ .blue {
+  color: #33e;
+}
+ .green {
+  color: #3e3;
+}
+ .pink {
+  color: #e3e;
+}
+.popup input {
+  padding: 10px;
+  border: 1px solid #333;
+  border-right: none;
+  height: 40px;
+  border-left: none;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 15px;
+}
 .popup button {
   padding: 10px;
+  height: 40px;
   background-color: rgba(221, 153, 34, .8);
   color: #eee;
   border-radius: 0px 5px 5px 0px;
@@ -316,6 +340,7 @@ h1 {
   border-left: none;
   box-sizing: border-box;
   outline: none;
+  font-size: 15px;
   transition: all .2s;
 }
 

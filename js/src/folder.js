@@ -56,6 +56,14 @@ class Folder {
       popup = newFolderPopup.domElement
       document.body.insertBefore(popup, main)
     }
+    const selectColor = popup.querySelector('select')
+    selectColor.classList.add(selectColor.value)
+    let lastColor = selectColor.value
+    selectColor.addEventListener('change', (e) => {
+      selectColor.classList.remove(lastColor)
+      lastColor = selectColor.value
+      selectColor.classList.add(selectColor.value)
+    })
     popup.querySelector('button').addEventListener('click', folderAdapter.createFolder.bind(folderAdapter))
   }
 

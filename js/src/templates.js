@@ -147,6 +147,47 @@ const Templates = {
       id: 'newFolderPopup',
       children: [
         {
+          tag: 'select',
+          classes: ['fa'],
+          properties: {
+            name: 'color'
+          },
+          children: [
+            {
+              tag: 'option',
+              classes: ['red', 'fa'],
+              content: '',
+              properties: {
+                value: 'red'
+              }
+            },
+            {
+              tag: 'option',
+              classes: ['blue', 'fa'],
+              content: '',
+              properties: {
+                value: 'blue'
+              }
+            },
+            {
+              tag: 'option',
+              classes: ['green', 'fa'],
+              content: '',
+              properties: {
+                value: 'green'
+              }
+            },
+            {
+              tag: 'option',
+              classes: ['pink', 'fa'],
+              content: '',
+              properties: {
+                value: 'pink'
+              }
+            }
+          ]
+        },
+        {
           tag: 'input',
           properties: {
             type: 'text',
