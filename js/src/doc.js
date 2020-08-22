@@ -1,5 +1,5 @@
 class Doc {
-  static openDocs = []
+  static openDocs = new Set
   static selectedDoc = null
   constructor(doc) {
     Object.assign(this, doc)
@@ -13,11 +13,29 @@ class Doc {
     return div
   }
   openDoc() {
-    this.
-    console.log('opening ' + this.name)
+    Doc.openDocs.add(this)
+    const editor = document.createElement('div')
+    editor.id = 'docEditor' + this.id
+    docAdapter.getDoc(this.id)
+    .then((json) => {
+      main.innerHTML = ''
+      main.append(editor)
+      this.quill = new Quill('#docEditor' + this.id, {
+        theme: 'snow'
+      })
+      this.quill.setContents(json.body)
+      editor.addEventListener('keyup', this.saveDoc.bind(this))
+    })
+
   }
   closeDoc() {
 
+  }
+  saveDoc() {
+    clearTimeout(saveTimer)
+    saveTimer = setTimeout(() => {
+      docAdapter.save(this)
+    }, 5000)
   }
   deleteDoc() {
     docAdapter.delete(this.id)

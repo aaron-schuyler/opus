@@ -44,7 +44,8 @@ class Folder {
     backFunction = false
     controls.innerHTML = ''
     controls.append(Folder.controls())
-    main.replaceChild(Folder.folderNavigatorElement, main.firstChild)
+    main.innerHTML = ''
+    main.append(Folder.folderNavigatorElement)
     document.querySelector('.back i').classList.add('disabled')
   }
 
