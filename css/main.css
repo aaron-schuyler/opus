@@ -13,6 +13,7 @@
     grid-template-columns: repeat(2, 1fr) !important;
     grid-gap: 10px !important;
     padding: 20px 10px !important;
+    max-height: calc(100vh - 320px) !important;
   }
   .folder-icon {
     width: calc(50vw - 50px) !important;
@@ -21,6 +22,9 @@
   .doc-icon {
     width: calc(50vw - 30px) !important;
     height: calc(50vw - 30px) !important;
+  }
+  .folder-control {
+    opacity: .8 !important;
   }
   #nav hr {
     display: none;
