@@ -9,6 +9,7 @@ class Doc {
     const div = dominator.domElement
     div.addEventListener('click', this.openDoc.bind(this))
     div.querySelector('#deleteDoc').addEventListener('click', this.deleteDoc.bind(this))
+    div.querySelector('#moveDoc').addEventListener('click', this.moveDoc.bind(this))
     this.icon = div
     return div
   }
@@ -20,7 +21,7 @@ class Doc {
     name.id = 'docName'
     name.value = this.name
     name.classList.add('doc-name')
-    name.addEventListener('change', this.saveDoc.bind(this))
+    name.addEventListener('keyup', this.saveDoc.bind(this))
     editor.id = 'docEditor' + this.id
     editor.style.opacity = 0
     docAdapter.getDoc(this.id)
@@ -66,6 +67,9 @@ class Doc {
     clearTimeout(saveTimer)
     saveTimer = setTimeout(() => {
       docAdapter.save(this)
+      .then(() => {
+        document.querySelector(`.tab[data-doc-id="${this.id}"] span`).innerText = this.name
+      })
     }, 5000)
   }
   deleteDoc(e) {
@@ -84,7 +88,9 @@ class Doc {
   shareDoc() {
 
   }
-  moveDoc() {
+  moveDoc(e) {
+    e.preventDefault()
+    e.stopPropagation()
 
   }
 
