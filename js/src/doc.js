@@ -13,13 +13,19 @@ class Doc {
     return div
   }
   openDoc() {
+    this.
     console.log('opening ' + this.name)
+  }
+  closeDoc() {
+
   }
   deleteDoc() {
     docAdapter.delete(this.id)
     .then((json) => {
       if (json.success) {
         this.icon.remove()
+        const docControls = document.querySelector("#docControls")
+        docControls.innerHTML = ''
       }
     })
   }
@@ -43,9 +49,6 @@ class Doc {
     this.icon.classList.toggle('border-color-gold')
   }
   deSelectDoc(e) {
-    setTimeout(() => {
-      docControls.innerHTML = ''
-    }, 2000)
     this.icon.classList.toggle('border-color-gold')
   }
   static search(e) {

@@ -27,10 +27,21 @@ let popup
 
 function closePopup(e) {
   let newButton = document.querySelector('.new-doc-icon')
-    if (popup && !popup.contains(e.target) && !newButton.contains(e.target)) {
-      popup.remove()
-      popup = undefined
+  if (popup && !popup.contains(e.target) && !newButton.contains(e.target)) {
+    popup.remove()
+    popup = undefined
+  }
+  let flag
+  for (const docIcon of document.querySelectorAll('.doc-icon')) {
+    if (docIcon.contains(e.target)) {
+      flag = true
+      break
     }
+  }
+  const docControls = document.querySelector('#docControls')
+  if (!flag  && !docControls.contains(e.target)) {
+    docControls.innerHTML = ''
+  }
 }
 
 document.addEventListener('click', closePopup)

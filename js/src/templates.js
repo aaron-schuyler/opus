@@ -18,7 +18,7 @@ const Templates = {
         },
         {
           tag: 'p',
-          content: obj.body
+          content: obj.exerp
         }
       ]
     }
