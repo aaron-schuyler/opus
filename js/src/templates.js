@@ -45,6 +45,34 @@ const Templates = {
               classes: ['folder-name']
             }
           ]
+        },
+        {
+          tag: 'div',
+          classes: ['folder-controls'],
+          children: [
+            {
+              tag: 'button',
+              classes: ['folder-control'],
+              id: 'editFolder',
+              children: [
+                {
+                  tag: 'i',
+                  classes: ['fa', 'fa-pen']
+                }
+              ]
+            },
+            {
+              tag: 'button',
+              classes: ['folder-control'],
+              id: 'deleteFolder',
+              children: [
+                {
+                  tag: 'i',
+                  classes: ['fa', 'fa-trash']
+                }
+              ]
+            }
+          ]
         }
       ]
     }

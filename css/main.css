@@ -166,6 +166,7 @@ h1 {
   text-align:center;
   cursor: pointer;
   transition: all .2s;
+  position: relative;
 }
 
 .folder-icon i{
@@ -205,6 +206,37 @@ h1 {
 }
 .folder-color-pink i {
   color: #e3e !important;
+}
+
+.folder-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.folder-control {
+  padding: 0px;
+  border: none;
+  margin-left: 10px;
+  background:transparent;
+  cursor:pointer;
+  opacity: 0;
+  transition: all .2s;
+  outline: none;
+}
+
+.folder-icon:hover .folder-control{
+  opacity: 1 !important;
+}
+
+.folder-control i:hover{
+  color: rgba(221, 153, 34, 1) !important;
+}
+
+.folder-control i {
+  font-size: 15px;
+  color: #eee !important;
+  transition: all .2s;
 }
 
 .doc-icon {

@@ -9,23 +9,33 @@ class Folder {
   get folderIcon() {
     const icon = new Dominator(Templates.folderIcon(this))
     const div = icon.domElement
+    div.querySelector('#deleteFolder').addEventListener('click', this.deleteFolder.bind(this))
     div.addEventListener('click', this.goToFolder.bind(this))
+    this.icon = div
     return div
   }
 
-  goToFolder() {
-    const docNavigatorElement = Folder.generateCollectionView('folder-' + this.id + '-docs', this.id)
-    folderAdapter.getFolderById(this.id)
-      .then((json) => {
-        for (const doc of json.docs) {
-          const newDoc = new Doc(doc)
-          docNavigatorElement.append(newDoc.docIcon)
-        }
-        backFunction = Folder.showAllFolders
-        controlHeading.innerText = json.name
-        document.querySelector('.back i').classList.remove('disabled')
-        main.replaceChild(docNavigatorElement, Folder.folderNavigatorElement)
-      })
+  deleteFolder() {
+    this.icon.remove()
+  }
+
+  goToFolder(e) {
+    let folderControls
+    if (this.icon) folderControls = this.icon.querySelector('.folder-controls')
+    if (folderControls && !folderControls.contains(e.target)){
+      const docNavigatorElement = Folder.generateCollectionView('folder-' + this.id + '-docs', this.id)
+      folderAdapter.getFolderById(this.id)
+        .then((json) => {
+          for (const doc of json.docs) {
+            const newDoc = new Doc(doc)
+            docNavigatorElement.append(newDoc.docIcon)
+          }
+          backFunction = Folder.showAllFolders
+          controlHeading.innerText = json.name
+          document.querySelector('.back i').classList.remove('disabled')
+          main.replaceChild(docNavigatorElement, Folder.folderNavigatorElement)
+        })
+    }
   }
 
   static controls() {
