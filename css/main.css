@@ -395,6 +395,7 @@ h1 {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 
 .tab span {
@@ -416,4 +417,56 @@ h1 {
 
 .open-doc {
   background-color: rgba(221, 153, 34, .8) !important;
+}
+
+.ql-toolbar.ql-snow {
+  border-color: #eee !important;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  color: #eee !important;
+}
+
+.ql-container.ql-snow {
+  border: 1px solid #eee !important;
+  color: #eee;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  height: calc(100vh - 260px);
+  overflow-y: scroll;
+}
+
+.ql-container a {
+  color: rgba(221, 153, 34, 1) !important;
+}
+
+.ql-stroke{
+  stroke: #eee !important;
+  transition: all .2s;
+}
+
+.ql-fill {
+  fill: #eee !important;
+  transition: all .2s;
+}
+
+.ql-formats button:hover .ql-stroke, .ql-active .ql-stroke{
+  stroke: rgba(221, 153, 34, 1) !important;
+}
+
+.ql-formats button:hover .ql-fill, .ql-active .ql-fill {
+  fill: rgba(221, 153, 34, 1) !important;
+}
+
+.ql-picker-label {
+  color: #eee !important;
+}
+
+.ql-tooltip {
+  box-shadow: none !important;
+  border: 1px solid #eee !important;
+  color: #eee !important;
+  background-color: rgba(50, 50, 50, 0.6) !important;
+  border-radius: 5px !important;
 }

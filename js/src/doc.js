@@ -25,12 +25,30 @@ class Doc {
         theme: 'snow'
       })
       this.quill.setContents(json.body)
-      editor.addEventListener('keyup', this.saveDoc.bind(this))
+      this.quill.on('text-change', this.saveDoc.bind(this))
     })
 
   }
-  closeDoc() {
-    console.log('closing doc')
+  closeDoc(e) {
+    const tabs = document.querySelectorAll('.tab')
+    let nextDoc
+    for (const [i, tab] of tabs.entries()){
+      if (tab.dataset.docId == this.id) {
+        if (tabs[i - 1]) {
+          nextDoc = tabs[i - 1].dataset.docId
+        } else if (tabs[i + 1]) {
+          nextDoc = tabs[i + 1].dataset.docId
+        }
+        break
+      }
+    }
+    delete Doc.openDocs[this.id]
+    if (nextDoc) {
+      Doc.openDocs[nextDoc].openDoc()
+    } else {
+      Folder.showAllFolders()
+    }
+
   }
   findDocById(id) {
 
@@ -46,6 +64,7 @@ class Doc {
     .then((json) => {
       if (json.success) {
         this.icon.remove()
+        delete Doc.openDocs[this.id]
         const docControls = document.querySelector("#docControls")
         docControls.innerHTML = ''
       }
@@ -136,6 +155,7 @@ class Doc {
       }
       tab.querySelector('span').addEventListener('click', Doc.openDocs[id].openDoc.bind(Doc.openDocs[id]))
       tab.querySelector('button').addEventListener('click', Doc.openDocs[id].closeDoc.bind(Doc.openDocs[id]))
+      tab.dataset.docId = id
       tabs.append(tab)
     }
     controls.append(tabs)
