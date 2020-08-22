@@ -124,10 +124,16 @@ class Folder {
     const domElement = collection.domElement
     const newIcon = domElement.querySelector('.new-doc-icon')
     if (folderId) {
-      //handle new doc
-      //newIcon.addEventListener('click', )
+      newIcon.addEventListener('click', (e) => {
+        docAdapter.newDoc(folderId)
+        .then((json) => {
+          if (json.success) {
+            const newDoc = new Doc(json.doc)
+            newDoc.openDoc()
+          }
+        })
+      })
     } else {
-      //handle new folder
       newIcon.addEventListener('click', Folder.newFolder)
     }
     return domElement

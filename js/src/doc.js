@@ -16,11 +16,16 @@ class Doc {
     Doc.openDocs[this.id] = this
     Doc.renderTabs(this.id)
     const editor = document.createElement('div')
+    const name = document.createElement('input')
+    name.id = 'docName'
+    name.value = this.name
+    name.classList.add('doc-name')
+    name.addEventListener('change', this.saveDoc.bind(this))
     editor.id = 'docEditor' + this.id
     docAdapter.getDoc(this.id)
     .then((json) => {
       main.innerHTML = ''
-      main.append(editor)
+      main.append(name, editor)
       this.quill = new Quill('#docEditor' + this.id, {
         theme: 'snow'
       })
@@ -30,6 +35,8 @@ class Doc {
 
   }
   closeDoc(e) {
+    clearTimeout(saveTimer)
+    docAdapter.save(this)
     const tabs = document.querySelectorAll('.tab')
     let nextDoc
     for (const [i, tab] of tabs.entries()){
@@ -54,9 +61,11 @@ class Doc {
 
   }
   saveDoc() {
+    const name = document.querySelector('#docName').value
+    this.name = name
     clearTimeout(saveTimer)
     saveTimer = setTimeout(() => {
-      docAdapter.save(this)
+      docAdapter.save(this, name)
     }, 5000)
   }
   deleteDoc() {
@@ -70,6 +79,8 @@ class Doc {
       }
     })
   }
+
+
   shareDoc() {
 
   }
