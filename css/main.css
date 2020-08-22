@@ -383,3 +383,37 @@ h1 {
   background-color: rgba(221, 153, 34, 1);
   cursor:pointer;
 }
+
+
+
+.tab {
+  display: inline;
+  margin: 5px;
+  margin-left: 0px;
+  padding:10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab span {
+  margin-right: 10px;
+  color: #eee;
+  cursor: pointer;
+}
+
+.tab button {
+  background: transparent;
+  border-radius: 50%;
+  padding:0px;
+  font-size: 15px;
+  border: none;
+  color: #eee;
+  outline: none;
+  cursor: pointer;
+}
+
+.open-doc {
+  background-color: rgba(221, 153, 34, .8) !important;
+}

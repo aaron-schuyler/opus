@@ -1,5 +1,5 @@
 class Doc {
-  static openDocs = new Set
+  static openDocs = {}
   static selectedDoc = null
   constructor(doc) {
     Object.assign(this, doc)
@@ -13,7 +13,8 @@ class Doc {
     return div
   }
   openDoc() {
-    Doc.openDocs.add(this)
+    Doc.openDocs[this.id] = this
+    Doc.renderTabs(this.id)
     const editor = document.createElement('div')
     editor.id = 'docEditor' + this.id
     docAdapter.getDoc(this.id)
@@ -29,6 +30,9 @@ class Doc {
 
   }
   closeDoc() {
+    console.log('closing doc')
+  }
+  findDocById(id) {
 
   }
   saveDoc() {
@@ -119,5 +123,21 @@ class Doc {
         }
       }, 100)
     }
+  }
+  static renderTabs(openDocId) {
+    controls.innerHTML = ''
+    const tabsDominator = new Dominator(Templates.tabs())
+    const tabs = tabsDominator.domElement
+    for (const id in Doc.openDocs) {
+      const tabDominator = new Dominator(Templates.tab(Doc.openDocs[id]))
+      const tab = tabDominator.domElement
+      if (openDocId == id) {
+        tab.classList.add('open-doc')
+      }
+      tab.querySelector('span').addEventListener('click', Doc.openDocs[id].openDoc.bind(Doc.openDocs[id]))
+      tab.querySelector('button').addEventListener('click', Doc.openDocs[id].closeDoc.bind(Doc.openDocs[id]))
+      tabs.append(tab)
+    }
+    controls.append(tabs)
   }
 }

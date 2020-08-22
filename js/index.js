@@ -31,16 +31,18 @@ function closePopup(e) {
     popup.remove()
     popup = undefined
   }
-  let flag
-  for (const docIcon of document.querySelectorAll('.doc-icon')) {
-    if (docIcon.contains(e.target)) {
-      flag = true
-      break
+  if (document.querySelector('.collection')) {
+    let flag
+    for (const docIcon of document.querySelectorAll('.doc-icon')) {
+      if (docIcon.contains(e.target)) {
+        flag = true
+        break
+      }
     }
-  }
-  const docControls = document.querySelector('#docControls')
-  if (!flag  && !docControls.contains(e.target)) {
-    docControls.innerHTML = ''
+    const docControls = document.querySelector('#docControls')
+    if (!flag  && !docControls.contains(e.target)) {
+      docControls.innerHTML = ''
+    }
   }
 }
 

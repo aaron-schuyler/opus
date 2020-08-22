@@ -252,5 +252,32 @@ const Templates = {
         }
       ]
     }
-  }
+  },
+  tabs: function() {
+    return {
+      tag: 'div',
+      classes: ['tabs']
+    }
+  },
+  tab: function(tab) {
+    return {
+      tag: 'div',
+      classes: ['tab'],
+      children: [
+        {
+          tag: 'span',
+          content: tab.name,
+        },
+        {
+          tag: 'button',
+          children: [
+            {
+              tag: 'i',
+              classes: ['fa', 'fa-times-circle']
+            }
+          ]
+        }
+      ]
+    }
+    }
 }
