@@ -19,6 +19,35 @@ const Templates = {
         {
           tag: 'p',
           content: obj.exerp
+        },
+        {
+          tag: 'div',
+          id: 'docControls',
+          classes: ['doc-controls'],
+          children: [
+            {
+              tag: 'button',
+              classes: ['doc-control'],
+              id: 'moveDoc',
+              children: [
+                {
+                  tag: 'i',
+                  classes: ['fa', 'fa-folder']
+                }
+              ]
+            },
+            {
+              tag: 'button',
+              classes: ['doc-control'],
+              id: 'deleteDoc',
+              children: [
+                {
+                  tag: 'i',
+                  classes: ['fa', 'fa-trash']
+                }
+              ]
+            }
+          ]
         }
       ]
     }

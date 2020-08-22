@@ -23,7 +23,7 @@
     width: calc(50vw - 30px) !important;
     height: calc(50vw - 30px) !important;
   }
-  .folder-control {
+  .folder-control, .doc-control {
     opacity: .8 !important;
   }
   #nav hr {
@@ -254,6 +254,8 @@ h1 {
   background-color: rgba(255, 255, 255, 0.1);
   cursor: pointer;
   transition: all .2s;
+  position:relative;
+  outline:none;
 }
 
 .doc-icon-header {
@@ -275,6 +277,37 @@ h1 {
   text-overflow: ellipsis;
   overflow: hidden;
   padding: 10px 0px;
+}
+
+.doc-controls {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.doc-control {
+  padding: 0px;
+  border: none;
+  margin-left: 10px;
+  background:transparent;
+  cursor:pointer;
+  opacity: 0;
+  transition: all .2s;
+  outline: none;
+}
+
+.doc-icon:hover .doc-control{
+  opacity: 1 !important;
+}
+
+.doc-control i:hover{
+  color: rgba(221, 153, 34, 1) !important;
+}
+
+.doc-control i {
+  font-size: 15px;
+  color: #eee !important;
+  transition: all .2s;
 }
 
 .folder-icon:hover, .doc-icon:hover {
@@ -406,7 +439,7 @@ h1 {
   cursor:pointer;
 }
 
-.doc-control {
+/* .doc-control {
   padding: 10px;
   margin-left: 5px;
   border-radius: 5px;
@@ -418,7 +451,7 @@ h1 {
 .doc-control:hover {
   background-color: rgba(221, 153, 34, 1);
   cursor:pointer;
-}
+} */
 
 
 

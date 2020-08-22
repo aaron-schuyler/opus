@@ -7,8 +7,8 @@ class Doc {
   get docIcon() {
     const dominator = new Dominator(Templates.docIcon(this))
     const div = dominator.domElement
-    div.addEventListener('focus', this.selectDoc.bind(this))
-    div.addEventListener('blur', this.deSelectDoc.bind(this))
+    div.addEventListener('click', this.openDoc.bind(this))
+    div.querySelector('#deleteDoc').addEventListener('click', this.deleteDoc.bind(this))
     this.icon = div
     return div
   }
@@ -22,6 +22,7 @@ class Doc {
     name.classList.add('doc-name')
     name.addEventListener('change', this.saveDoc.bind(this))
     editor.id = 'docEditor' + this.id
+    editor.style.opacity = 0
     docAdapter.getDoc(this.id)
     .then((json) => {
       main.innerHTML = ''
@@ -30,9 +31,9 @@ class Doc {
         theme: 'snow'
       })
       this.quill.setContents(json.body)
+      editor.style.opacity = 1
       this.quill.on('text-change', this.saveDoc.bind(this))
     })
-
   }
   closeDoc(e) {
     clearTimeout(saveTimer)
@@ -57,25 +58,24 @@ class Doc {
     }
 
   }
-  findDocById(id) {
-
-  }
   saveDoc() {
     const name = document.querySelector('#docName').value
     this.name = name
+    this.exerp = this.quill.getText(0, 200)
+    this.body = this.quill.getContents()
     clearTimeout(saveTimer)
     saveTimer = setTimeout(() => {
-      docAdapter.save(this, name)
+      docAdapter.save(this)
     }, 5000)
   }
-  deleteDoc() {
+  deleteDoc(e) {
+    e.preventDefault()
+    e.stopPropagation()
     docAdapter.delete(this.id)
     .then((json) => {
       if (json.success) {
         this.icon.remove()
         delete Doc.openDocs[this.id]
-        const docControls = document.querySelector("#docControls")
-        docControls.innerHTML = ''
       }
     })
   }
@@ -87,22 +87,7 @@ class Doc {
   moveDoc() {
 
   }
-  selectDoc(e) {
-    Doc.selectedDoc = this
-    const dominator = new Dominator(Templates.docControls(this.id))
-    const newDocControls = dominator.domElement
-    newDocControls.querySelector('#editDoc').addEventListener('click', this.openDoc.bind(this))
-    newDocControls.querySelector('#deleteDoc').addEventListener('click', this.deleteDoc.bind(this))
-    newDocControls.querySelector('#shareDoc').addEventListener('click', this.shareDoc.bind(this))
-    newDocControls.querySelector('#moveDoc').addEventListener('click', this.moveDoc.bind(this))
-    const docControls = document.querySelector("#docControls")
-    docControls.innerHTML = ''
-    docControls.append(newDocControls)
-    this.icon.classList.toggle('border-color-gold')
-  }
-  deSelectDoc(e) {
-    this.icon.classList.toggle('border-color-gold')
-  }
+
   static search(e) {
     const previous = main.firstChild
     controlHeading.innerText = 'Search'

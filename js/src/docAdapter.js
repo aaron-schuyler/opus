@@ -37,8 +37,7 @@ class DocAdapter {
     .then(res => res.json())
   }
   save(doc) {
-    const exerp = doc.quill.getText(0, 40)
-    const body = doc.quill.getContents()
+
     return fetch(this.baseUrl + doc.id, {
       method: 'PATCH',
       credentials: 'include',
@@ -47,9 +46,9 @@ class DocAdapter {
         'Accepts': 'application/json'
       },
       body: JSON.stringify({
-        name: name,
-        exerp: exerp,
-        body: body
+        name: doc.name,
+        exerp: doc.exerp,
+        body: doc.body
       })
     })
     .then(res => res.json())
