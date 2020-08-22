@@ -48,6 +48,7 @@ const Templates = {
         },
         {
           tag: 'div',
+          id: 'folderControls',
           classes: ['folder-controls'],
           children: [
             {

@@ -9,6 +9,7 @@ class Dominator {
       }
     }
     this.children = childObjects
+    this.element = this.domElement
   }
   get domElement() {
     const domElement = document.createElement(this.tag)
@@ -22,7 +23,9 @@ class Dominator {
     }
     if (this.children) for (const child of this.children) {
       domElement.append(child.domElement)
+      if (child.id) this[child.id] = child.domElement
     }
+    this.element = domElement
     return domElement
   }
   addChild(object, index = -1) {

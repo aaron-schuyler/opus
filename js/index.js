@@ -27,7 +27,13 @@ let popup
 
 function closePopup(e) {
   let newButton = document.querySelector('.new-doc-icon')
-  if (popup && !popup.contains(e.target) && !newButton.contains(e.target)) {
+  let edit = true
+  if (e.target.classList.contains('fa-pen') && e.target.parentElement.id === 'editFolder') {
+    edit = false
+  } else {
+    edit = true
+  }
+  if (popup && !popup.contains(e.target) && !newButton.contains(e.target) && edit) {
     popup.remove()
     popup = undefined
   }

@@ -10,13 +10,37 @@ class Folder {
     const icon = new Dominator(Templates.folderIcon(this))
     const div = icon.domElement
     div.querySelector('#deleteFolder').addEventListener('click', this.deleteFolder.bind(this))
+    div.querySelector('#editFolder').addEventListener('click', this.editFolder.bind(this))
     div.addEventListener('click', this.goToFolder.bind(this))
     this.icon = div
     return div
   }
 
   deleteFolder() {
-    this.icon.remove()
+    folderAdapter.deleteFolder(this.id)
+    .then((json) => {
+      if (json.success) {
+        this.icon.remove()
+      }
+    })
+  }
+
+  editFolder() {
+    Folder.newFolder()
+    const oldButton = popup.querySelector('button')
+    const button = oldButton.cloneNode()
+    popup.replaceChild(button, oldButton)
+    button.innerText = 'Update Folder'
+    popup.querySelector('input').value = this.name
+    const select = popup.querySelector('select')
+    select.value = this.color
+    select.classList.remove('red')
+    select.classList.add(this.color)
+    button.addEventListener('click', this.updateFolder.bind(this))
+  }
+
+  updateFolder(e) {
+    folderAdapter.updateFolder(this)
   }
 
   goToFolder(e) {
@@ -62,18 +86,22 @@ class Folder {
   static newFolder() {
     const newFolderPopup = new Dominator(Templates.newFolderPopup())
     if (document.querySelector('#newFolderPopup')) {
-      document.body.replaceChild(popup, popup)
+      let newPopup = newFolderPopup.domElement
+      document.body.replaceChild(newPopup, popup)
+      popup = newPopup
     } else {
       popup = newFolderPopup.domElement
       document.body.insertBefore(popup, main)
     }
     const selectColor = popup.querySelector('select')
     selectColor.classList.add(selectColor.value)
-    let lastColor = selectColor.value
-    selectColor.addEventListener('change', (e) => {
-      selectColor.classList.remove(lastColor)
-      lastColor = selectColor.value
-      selectColor.classList.add(selectColor.value)
+    selectColor.addEventListener('focus', (e) => {
+      let lastColor = selectColor.value
+      selectColor.addEventListener('change', (e) => {
+        selectColor.classList.remove(lastColor)
+        lastColor = selectColor.value
+        selectColor.classList.add(selectColor.value)
+      })
     })
     popup.querySelector('button').addEventListener('click', folderAdapter.createFolder.bind(folderAdapter))
   }
