@@ -25,8 +25,10 @@ class Folder {
     })
   }
 
-  editFolder() {
-    Folder.newFolder()
+  editFolder(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    Folder.newFolder(e)
     const oldButton = popup.querySelector('button')
     const button = oldButton.cloneNode()
     popup.replaceChild(button, oldButton)
@@ -81,9 +83,12 @@ class Folder {
     main.innerHTML = ''
     main.append(Folder.folderNavigatorElement)
     document.querySelector('.back i').classList.add('disabled')
+    if (Doc.lastOpenDoc) docView.addEventListener('click', Doc.lastOpenDoc.openDoc.bind(Doc.lastOpenDoc))
   }
 
-  static newFolder() {
+  static newFolder(e) {
+    e.preventDefault()
+    e.stopPropagation()
     const newFolderPopup = new Dominator(Templates.newFolderPopup())
     if (document.querySelector('#newFolderPopup')) {
       let newPopup = newFolderPopup.domElement

@@ -1,9 +1,12 @@
 class Doc {
   static openDocs = {}
   static selectedDoc = null
+  static lastOpenDoc = null
+
   constructor(doc) {
     Object.assign(this, doc)
   }
+
   get docIcon() {
     const dominator = new Dominator(Templates.docIcon(this))
     const div = dominator.domElement
@@ -15,13 +18,14 @@ class Doc {
   }
   openDoc() {
     Doc.openDocs[this.id] = this
+    Doc.lastOpenDoc = this
     Doc.renderTabs(this.id)
-    const editor = document.createElement('div')
     const name = document.createElement('input')
     name.id = 'docName'
     name.value = this.name
     name.classList.add('doc-name')
     name.addEventListener('keyup', this.saveDoc.bind(this))
+    const editor = document.createElement('div')
     editor.id = 'docEditor' + this.id
     editor.style.opacity = 0
     docAdapter.getDoc(this.id)
@@ -54,10 +58,11 @@ class Doc {
     delete Doc.openDocs[this.id]
     if (nextDoc) {
       Doc.openDocs[nextDoc].openDoc()
+      Doc.renderTabs()
     } else {
+      this.lastOpenDoc = null
       Folder.showAllFolders()
     }
-
   }
   saveDoc() {
     const name = document.querySelector('#docName').value
@@ -91,7 +96,10 @@ class Doc {
   moveDoc(e) {
     e.preventDefault()
     e.stopPropagation()
-
+    // list all folders in dropdown
+    // select folder
+    // update doc
+    // remove doc from dom
   }
 
   static search(e) {
