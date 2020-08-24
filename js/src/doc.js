@@ -33,6 +33,16 @@ class Doc {
       main.innerHTML = ''
       main.append(name, editor)
       this.quill = new Quill('#docEditor' + this.id, {
+        modules: {
+          toolbar: [
+            [{ 'header': [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike'],
+            ['code'],
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'color': [] }, { 'background': [] }],
+            ['code-block']
+          ]
+        },
         theme: 'snow'
       })
       this.quill.setContents(json.body)

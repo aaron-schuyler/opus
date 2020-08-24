@@ -521,6 +521,13 @@ h1 {
   border-radius: 5px !important;
 }
 
+.ql-snow .ql-editor code, .ql-snow .ql-editor pre.ql-syntax {
+  background-color: rgba(50, 50, 50, 0.6) !important;
+  color: rgba(221, 153, 34, 1) !important;
+  border: .5px solid #eee !important;
+  border-radius: 5px !important;
+}
+
 .doc-name{
   border: 1px solid #eee !important;
   color: #eee;
