@@ -36,6 +36,20 @@ class DocAdapter {
     })
     .then(res => res.json())
   }
+  updateDocFolder(docId, folderId) {
+    return fetch(this.baseUrl + docId, {
+      method: 'PATCH',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accepts': 'application/json'
+      },
+      body: JSON.stringify({
+        folder_id: folderId
+      })
+    })
+    .then(res => res.json())
+  }
   save(doc) {
 
     return fetch(this.baseUrl + doc.id, {

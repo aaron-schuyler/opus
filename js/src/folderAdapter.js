@@ -6,11 +6,7 @@ class FolderAdapter {
   getFolders() {
     return fetch(this.baseUrl, {credentials: 'include'})
       .then(res => res.json())
-      .then(json => {
-        for (const folder of json.folders) {
-          new Folder(folder)
-        }
-      })
+      
   }
   getFolderById(id) {
     return fetch(this.baseUrl + id, {credentials: 'include'})

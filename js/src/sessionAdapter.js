@@ -28,6 +28,11 @@
     if (json.success) {
       document.querySelector('.user-form').remove()
       folderAdapter.getFolders()
+      .then(json => {
+        for (const folder of json.folders) {
+          new Folder(folder)
+        }
+      })
         .then(Folder.showAllFolders)
     } else {
       document.querySelector('.user-form').classList.remove('hidden')

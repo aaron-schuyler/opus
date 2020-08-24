@@ -337,5 +337,34 @@ const Templates = {
         }
       ]
     }
+  },
+  moveDoc: function(folders) {
+    let options = []
+    for (const folder of folders) {
+      options.push({
+        tag: 'option',
+        content: folder.name,
+        properties: {
+          value: folder.id
+        }
+      })
     }
+    return {
+      tag: 'div',
+      classes: ['popup'],
+      id: 'moveDocPopup',
+      children: [
+        {
+          tag: 'select',
+          id: 'selectFolder',
+          children: options
+        },
+        {
+          tag: 'button',
+          id: 'moveDocButton',
+          content: 'Move Doc'
+        }
+      ]
+    }
+  }
 }

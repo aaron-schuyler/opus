@@ -96,6 +96,28 @@ class Doc {
   moveDoc(e) {
     e.preventDefault()
     e.stopPropagation()
+    folderAdapter.getFolders()
+      .then((json) => {
+        const moveDocPopup = new Dominator(Templates.moveDoc(json.folders))
+        if (document.querySelector('#moveDocPopup')) {
+          let newPopup = moveDocPopup.domElement
+          document.body.replaceChild(newPopup, popup)
+          popup = newPopup
+        } else {
+          popup = moveDocPopup.domElement
+          document.body.insertBefore(popup, main)
+        }
+        popup.querySelector('#moveDocButton').addEventListener('click', (e) => {
+          const folderId = popup.querySelector('#selectFolder').value
+          docAdapter.updateDocFolder(this.id, folderId)
+          .then((json) => {
+            if (json.success) {
+              this.icon.remove()
+            }
+          })
+        })
+      })
+
     // list all folders in dropdown
     // select folder
     // update doc
