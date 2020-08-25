@@ -68,9 +68,8 @@ class Doc {
     delete Doc.openDocs[this.id]
     if (nextDoc) {
       Doc.openDocs[nextDoc].openDoc()
-      Doc.renderTabs()
     } else {
-      this.lastOpenDoc = null
+      Doc.lastOpenDoc = null
       Folder.showAllFolders()
     }
   }
@@ -127,11 +126,6 @@ class Doc {
           })
         })
       })
-
-    // list all folders in dropdown
-    // select folder
-    // update doc
-    // remove doc from dom
   }
 
   static search(e) {
