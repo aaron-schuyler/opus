@@ -73,6 +73,11 @@ class Folder {
     search.addEventListener('focus', Doc.showEmptySearch)
     foldersControls.querySelector('.back').addEventListener('click', Folder.goBack)
     controlHeading = foldersControls.querySelector('h2')
+    foldersControls.querySelector('#all').addEventListener('click', Folder.filter)
+    foldersControls.querySelector('#red').addEventListener('click', Folder.filter)
+    foldersControls.querySelector('#blue').addEventListener('click', Folder.filter)
+    foldersControls.querySelector('#green').addEventListener('click', Folder.filter)
+    foldersControls.querySelector('#pink').addEventListener('click', Folder.filter)
     return foldersControls
   }
 
@@ -83,7 +88,30 @@ class Folder {
     main.innerHTML = ''
     main.append(Folder.folderNavigatorElement)
     document.querySelector('.back i').classList.add('disabled')
+    document.querySelector('#all').classList.add('active')
     if (Doc.lastOpenDoc) docView.addEventListener('click', Doc.lastOpenDoc.openDoc.bind(Doc.lastOpenDoc))
+  }
+
+  static filter(e) {
+    const color = e.target.id
+    const folderIcons = document.querySelectorAll('.folder-icon')
+    const buttons = document.querySelectorAll('#filter button')
+    for (const button of buttons) {
+      if (button.id === color) {
+        button.classList.add('active')
+      } else {
+        button.classList.remove('active')
+      }
+    }
+    for (const folder of folderIcons) {
+      if (color === 'all') {
+        folder.classList.remove('hidden')
+      } else if (folder.classList.contains('folder-color-' + color)) {
+        folder.classList.remove('hidden')
+      } else if (!folder.classList.contains('new-doc-icon')){
+        folder.classList.add('hidden')
+      }
+    }
   }
 
   static newFolder(e) {

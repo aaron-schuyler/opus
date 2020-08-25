@@ -179,8 +179,34 @@ const Templates = {
         },
         {
           tag: 'div',
-          classes: ['control'],
-          id: 'docControls'
+          classes: ['control', 'filter'],
+          id: 'filter',
+          children: [
+            {
+              tag: 'span',
+              content: 'Filter:'
+            },
+            {
+              tag: 'button',
+              id: 'all'
+            },
+            {
+              tag: 'button',
+              id: 'red'
+            },
+            {
+              tag: 'button',
+              id: 'blue'
+            },
+            {
+              tag: 'button',
+              id: 'green'
+            },
+            {
+              tag: 'button',
+              id: 'pink'
+            }
+          ]
         }
       ]
     }
