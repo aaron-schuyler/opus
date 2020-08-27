@@ -1,5 +1,6 @@
 let main = document.querySelector('#main')
 let controls = document.querySelector('#viewControls')
+const BASE_URL = 'http://localhost:3000'
 let docAdapter = new DocAdapter
 let folderAdapter = new FolderAdapter
 let session = new SessionAdapter

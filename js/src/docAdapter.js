@@ -1,6 +1,6 @@
 class DocAdapter {
   constructor() {
-    this.baseUrl = 'http://localhost:3000/docs/'
+    this.baseUrl = BASE_URL + '/docs/'
   }
   search(query) {
     return fetch(this.baseUrl + 'search/' + query, {

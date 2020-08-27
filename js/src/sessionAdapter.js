@@ -1,6 +1,6 @@
  class SessionAdapter {
   constructor() {
-    this.baseUrl = 'http://localhost:3000/'
+    this.baseUrl = BASE_URL + '/'
   }
 
   checkSession() {

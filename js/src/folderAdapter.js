@@ -1,12 +1,12 @@
 class FolderAdapter {
   constructor() {
-    this.baseUrl = 'http://localhost:3000/folders/'
+    this.baseUrl = BASE_URL + '/folders/'
   }
 
   getFolders() {
     return fetch(this.baseUrl, {credentials: 'include'})
       .then(res => res.json())
-      
+
   }
   getFolderById(id) {
     return fetch(this.baseUrl + id, {credentials: 'include'})
