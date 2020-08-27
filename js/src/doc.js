@@ -9,10 +9,10 @@ class Doc {
 
   get docIcon() {
     const dominator = new Dominator(Templates.docIcon(this))
+    dominator.event(this.openDoc.bind(this))
+    dominator.event(this.deleteDoc.bind(this), 'deleteDoc')
+    dominator.event(this.moveDoc.bind(this), 'moveDoc')
     const div = dominator.domElement
-    div.addEventListener('click', this.openDoc.bind(this))
-    div.querySelector('#deleteDoc').addEventListener('click', this.deleteDoc.bind(this))
-    div.querySelector('#moveDoc').addEventListener('click', this.moveDoc.bind(this))
     this.icon = div
     return div
   }
@@ -25,6 +25,10 @@ class Doc {
     name.value = this.name
     name.classList.add('doc-name')
     name.addEventListener('keyup', this.saveDoc.bind(this))
+    const saved = document.createElement('div')
+    saved.id = 'saved'
+    saved.innerText = 'Doc saved'
+    saved.classList.add('doc-saved')
     const editor = document.createElement('div')
     editor.id = 'docEditor' + this.id
     editor.style.opacity = 0
@@ -45,6 +49,7 @@ class Doc {
         },
         theme: 'snow'
       })
+      document.querySelector('.ql-toolbar').append(saved)
       this.quill.setContents(json.body)
       editor.style.opacity = 1
       this.quill.on('text-change', this.saveDoc.bind(this))
@@ -83,6 +88,10 @@ class Doc {
       docAdapter.save(this)
       .then(() => {
         document.querySelector(`.tab[data-doc-id="${this.id}"] span`).innerText = this.name
+        document.querySelector('#saved').style.opacity = 1
+        setTimeout(() => {
+          document.querySelector('#saved').style.opacity = 0
+        }, 800)
       })
     }, 5000)
   }
@@ -108,6 +117,15 @@ class Doc {
     folderAdapter.getFolders()
       .then((json) => {
         const moveDocPopup = new Dominator(Templates.moveDoc(json.folders))
+        moveDocPopup.event((e) => {
+          const folderId = popup.querySelector('#selectFolder').value
+          docAdapter.updateDocFolder(this.id, folderId)
+          .then((json) => {
+            if (json.success) {
+              this.icon.remove()
+            }
+          })
+        }, 'moveDocButton')
         if (document.querySelector('#moveDocPopup')) {
           let newPopup = moveDocPopup.domElement
           document.body.replaceChild(newPopup, popup)
@@ -116,15 +134,15 @@ class Doc {
           popup = moveDocPopup.domElement
           document.body.insertBefore(popup, main)
         }
-        popup.querySelector('#moveDocButton').addEventListener('click', (e) => {
-          const folderId = popup.querySelector('#selectFolder').value
-          docAdapter.updateDocFolder(this.id, folderId)
-          .then((json) => {
-            if (json.success) {
-              this.icon.remove()
-            }
-          })
-        })
+        // popup.querySelector('#moveDocButton').addEventListener('click', (e) => {
+        //   const folderId = popup.querySelector('#selectFolder').value
+        //   docAdapter.updateDocFolder(this.id, folderId)
+        //   .then((json) => {
+        //     if (json.success) {
+        //       this.icon.remove()
+        //     }
+        //   })
+        // })
       })
   }
 

@@ -32,6 +32,9 @@
   .controls {
     grid-template-columns: auto repeat(2, 1fr) !important;
   }
+  .filter {
+    grid-column-start: 3;
+  }
 }
 
 body {
@@ -112,6 +115,7 @@ h1 {
   width: 300px;
   padding:20px;
   margin:auto;
+  margin-top: 10px;
   border: 1px solid #eee;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.1);
@@ -596,4 +600,11 @@ h1 {
 
 #pink:hover, #pink.active {
   background: #e3e !important;
+}
+
+#saved {
+  display: inline;
+  color: #3e3;
+  opacity: 0;
+  transition: all .2s;
 }

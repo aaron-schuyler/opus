@@ -47,6 +47,7 @@ class Folder {
 
   goToFolder(e) {
     let folderControls
+    document.querySelector('#filter').remove()
     if (this.icon) folderControls = this.icon.querySelector('.folder-controls')
     if (folderControls && !folderControls.contains(e.target)){
       const docNavigatorElement = Folder.generateCollectionView('folder-' + this.id + '-docs', this.id)

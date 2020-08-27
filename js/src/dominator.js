@@ -8,6 +8,7 @@ class Dominator {
         childObjects.push(childObject)
       }
     }
+    this.eventListeners = []
     this.children = childObjects
     this.element = this.domElement
   }
@@ -25,16 +26,33 @@ class Dominator {
       domElement.append(child.domElement)
       if (child.id) this[child.id] = child.domElement
     }
+    if (this.eventListeners) for (const eventListener of this.eventListeners) {
+      domElement.addEventListener(eventListener.type, eventListener.action)
+    }
     this.element = domElement
     return domElement
   }
-  addChild(object, index = -1) {
-    const childObject = new Dominator(object)
-    if (index === -1){
-      this.children.push(childObject)
-    } else {
-      this.children.splice(index, 0, childObject)
+  findChildById(id) {
+    if (this.children) {
+      for (const child of this.children) {
+        if (child.id === id) {
+          return child
+        } else if (child.children) {
+          let found = child.findChildById(id)
+          if (found) return found
+        }
+      }
     }
-    return this.domElement
+    return false
+  }
+  event(action, id, type = 'click') {
+    if (id) {
+      const node = this.findChildById(id)
+      if (node) {
+        node.eventListeners.push({type: type, action: action})
+      }
+    } else {
+      this.eventListeners.push({type: type, action: action})
+    }
   }
 }
