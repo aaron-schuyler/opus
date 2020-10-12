@@ -1,6 +1,6 @@
 let main = document.querySelector('#main')
 let controls = document.querySelector('#viewControls')
-const BASE_URL = 'https://aaronschuyler-opus-api.herokuapp.com/'
+const BASE_URL = 'https://aaronschuyler-opus-api.herokuapp.com'
 let docAdapter = new DocAdapter
 let folderAdapter = new FolderAdapter
 let session = new SessionAdapter
