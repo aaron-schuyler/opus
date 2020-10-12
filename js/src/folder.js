@@ -60,6 +60,15 @@ class Folder {
           backFunction = Folder.showAllFolders
           controlHeading.innerText = json.name
           document.querySelector('.back i').classList.remove('disabled')
+          let controls = document.querySelector('.controls')
+          let filter = document.createElement('div')
+          filter.id = 'filterDocs'
+          filter.classList.add('.control')
+          let sortButton = document.createElement('button')
+          sortButton.addEventListener('click', Doc.filterDocs)
+          sortButton.innerText = 'A-Z'
+          filter.append(sortButton)
+          controls.append(filter)
           main.replaceChild(docNavigatorElement, Folder.folderNavigatorElement)
         })
     }

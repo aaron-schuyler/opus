@@ -16,6 +16,7 @@ class Doc {
     this.icon = div
     return div
   }
+
   openDoc() {
     Doc.openDocs[this.id] = this
     Doc.lastOpenDoc = this
@@ -144,6 +145,26 @@ class Doc {
         //   })
         // })
       })
+  }
+
+  static filterDocs() {
+    let collection = document.querySelector('.collection')
+    let children = Array.from(collection.children)
+    children.forEach((child) => {
+      if (!child.classList.contains('new-doc-icon')) collection.removeChild(child)
+    })
+    children.shift()
+    let sorted = children.sort((a,b) => {
+      let titleA = a.querySelector('h3').textContent
+      let titleB = b.querySelector('h3').textContent
+      if (titleA < titleB) return -1
+      if (titleA > titleB) return 1
+      return 0
+    })
+    console.log(sorted)
+    sorted.forEach((node) => {
+      collection.append(node)
+    })
   }
 
   static search(e) {
