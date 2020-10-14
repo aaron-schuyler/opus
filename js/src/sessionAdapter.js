@@ -25,6 +25,7 @@
   }
 
   handleAuthEvent(json) {
+    console.log(json)
     if (json.success) {
       document.querySelector('.user-form').remove()
       folderAdapter.getFolders()
